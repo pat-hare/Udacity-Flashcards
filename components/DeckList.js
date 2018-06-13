@@ -14,8 +14,11 @@ class DeckList extends React.Component {
       <TouchableOpacity
         style={styles.button}
         onPress={() =>
-          this.props.navigation.navigate('DeckView')
-        }
+          this.props.navigation.navigate('DeckView', {
+            itemId: item.title,
+            cards: item.questions.length,
+            questions: item.questions
+          })}
       >
         <Text style={styles.buttonText}>{item.title}</Text>
         <Text style={styles.buttonText}>{item.questions.length} Cards</Text>
