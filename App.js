@@ -2,14 +2,19 @@ import React from 'react';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { StyleSheet, Text, View } from 'react-native'
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
+import reducer from './reducers'
 import { MainNavigator } from './components/Navigation'
-import { logger } from 'redux-logger'
-import { thunk } from 'redux-thunk'
 
 export default class App extends React.Component {
   render() {
+    const store = createStore(reducer, applyMiddleware(thunk,logger))
+    console.log(store.getState())
     return (
-      <MainNavigator />
+      <Provider store={store}>
+        <MainNavigator />
+      </Provider>
     );
   }
 }

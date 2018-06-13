@@ -1,11 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 
 class DeckView extends React.Component {
   render() {
     return (
       <View>
-        <Text>DeckView</Text>
+        <Button title='Quiz'
+          onPress={() => this.props.navigation.navigate('Quiz')} />
       </View>
     )
   }
