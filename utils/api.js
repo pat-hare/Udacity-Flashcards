@@ -1,15 +1,15 @@
 import { AsyncStorage } from 'react-native'
+import { _getDecks } from './_DATA'
+import { setInitialData } from './_DATA'
 
 export const DECK_STORAGE_KEY = 'FlashcardDecks'
 
-export const getDecks = () => {
-  return AsyncStorage.getItem(DECK_STORAGE_KEY).then(data => JSON.parse(data))
-}
-
-export const addDeckToAsync = newDeck => {
-  AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(newDeck)).then(data => newDeck)
-}
-
-export const addCardToAsync = deck => {
-  AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(deck)).then(data => deck)
+export function getInitialData() {
+  return Promise.all([
+    _getDecks(),
+  ]).then(([decks]) => ({
+    decks: decks
+  })).then(
+    setInitialData()
+  )
 }

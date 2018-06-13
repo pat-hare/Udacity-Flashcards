@@ -1,4 +1,6 @@
-import { getDecks, addDeckToAsync, addCardToAsync } from '../utils/api'
+import { addDeckToAsync, addCardToAsync, getInitialData } from '../utils/api'
+import { fetchDecksFromAsync } from '../utils/_DATA'
+
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
@@ -17,10 +19,11 @@ function addDeckAction (deck) {
   }
 }
 
-export const fetchDecks = () => dispatch => getDecks().then(
-  decks => dispatch(receiveDecks(decks))
-)
-
-export const addDeck = (data) => dispatch => addDeckToAsync(data).then(
-  deck => dispatch(addDeckAction(deck))
-)
+export function handleInitialData() {
+  return (dispatch) => {
+    return getInitialData()
+      .then(({ decks }) => {
+        dispatch(receiveDecks(decks))
+      })
+  }
+}

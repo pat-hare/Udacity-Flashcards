@@ -1,22 +1,63 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, AsyncStorage, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { fetchDecks } from '../actions'
+import { handleInitialData } from '../actions'
+import { DECK_STORAGE_KEY } from '../utils/api'
 
 class DeckList extends React.Component {
   componentDidMount() {
-    this.props.fetchDecks()
+    this.props.dispatch(handleInitialData())
+  }
+  renderItem = ({ item }) => {
+  return (
+    <View>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() =>
+          this.props.navigation.navigate('DeckView')
+        }
+      >
+        <Text style={styles.buttonText}>{item.title}</Text>
+        <Text style={styles.buttonText}>{item.questions.length} Cards</Text>
+      </TouchableOpacity>
+    </View>
+    );
   }
   render() {
-    console.log(this.state)
     return (
-      <View>
-        <Button title='Individual Deck'
-          onPress={() => this.props.navigation.navigate('DeckView')} />
+      <View style={styles.container}>
+        <Text style={styles.bigBlueTitle}>Pick a deck:</Text>
+        <FlatList
+          data={Object.values(this.props.decks)}
+          renderItem={this.renderItem}
+        />
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 60,
+    alignItems: 'center'
+  },
+  button: {
+    marginTop: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#07575b'
+  },
+  buttonText: {
+    padding: 10,
+    color: '#c4dfe6'
+  },
+  bigBlueTitle: {
+    color: '#003b46',
+    fontWeight: 'bold',
+    fontSize: 50,
+    textAlign: 'center'
+  }
+})
 
 function mapStateToProps ({ decks }) {
   return {
@@ -24,4 +65,4 @@ function mapStateToProps ({ decks }) {
   }
 }
 
-export default connect(mapStateToProps, { fetchDecks })(DeckList)
+export default connect(mapStateToProps)(DeckList)

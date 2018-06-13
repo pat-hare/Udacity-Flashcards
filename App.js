@@ -10,7 +10,6 @@ import { MainNavigator } from './components/Navigation'
 export default class App extends React.Component {
   render() {
     const store = createStore(reducer, applyMiddleware(thunk,logger))
-    console.log(store.getState())
     return (
       <Provider store={store}>
         <MainNavigator />
