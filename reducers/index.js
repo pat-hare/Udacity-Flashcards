@@ -14,9 +14,12 @@ function decks (state={}, action) {
         [action.deck]: {title: action.deck, questions: []}
       }
     case ADD_CARD:
+      console.log('Reducers', state[action.card.deck].questions)
+      const newCard = {question: action.card.question, answer: action.card.answer}
+      const prevArray = state[action.card.deck].questions
       return {
         ...state,
-        ...action.card
+        [action.card.deck]: {title: action.card.deck, questions: prevArray.concat(newCard)}
       }
     default:
       return state
