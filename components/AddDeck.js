@@ -8,13 +8,16 @@ import {
   Button,
   Alert
 } from 'react-native'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as Actions from '../actions/index'
 
 class AddDeck extends React.Component {
   state = {
     inputText: ''
   }
   render() {
-    console.log('inputText', this.state)
+    console.log('inputText', this.props)
     return (
       <View style={styles.button}>
         <Text style={styles.bigBlueTitle}>
@@ -30,9 +33,7 @@ class AddDeck extends React.Component {
         </View>
         <Button
           style={{height: 40, color: '#66a5ad'}}
-          onPress={() => {
-          Alert.alert('Submitted!');
-          }}
+          onPress={() => this.props.actions.addDeckAction(this.state.inputText) && Alert.alert('Submitted!')}
           title='Submit'
         />
       </View>
@@ -57,4 +58,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AddDeck
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(Actions, dispatch)
+})
+
+export default connect(null, mapDispatchToProps)(AddDeck)
