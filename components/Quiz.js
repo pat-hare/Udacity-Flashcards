@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native'
+import { setLocalNotification, clearLocalNotification } from '../App'
 
 class Quiz extends React.Component {
   state = {
@@ -61,11 +62,11 @@ class Quiz extends React.Component {
       <View style={styles.container}>
         <Text style={styles.bigBlueTitle}>{this.state.correct} / {this.props.navigation.state.params.cards}</Text>
         <Button
-          onPress={() => this.props.navigation.goBack()}
+          onPress={() => this.props.navigation.goBack() && clearLocalNotification().then(setLocalNotification)}
           title='Home'
         />
         <Button
-          onPress={() => this.reset()}
+          onPress={() => this.reset() && clearLocalNotification().then(setLocalNotification)}
           title='Start Over!'
         />
       </View>
