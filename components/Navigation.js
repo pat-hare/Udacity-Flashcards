@@ -1,6 +1,9 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
+import {
+  createBottomTabNavigator,
+  createStackNavigator
+} from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
 import AddCard from './AddCard'
 import AddDeck from './AddDeck'
@@ -13,14 +16,16 @@ const Tabs = createBottomTabNavigator({
     screen: DeckList,
     navigationOptions: {
       tabBarLabel: 'Home',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='md-home' size={30} color={tintColor} />
+      tabBarIcon: ({ tintColor }) =>
+        <Ionicons name='md-home' size={30} color={tintColor} />
     }
   },
   AddQuiz: {
     screen: AddDeck,
     navigationOptions: {
       tabBarLabel: 'Add Quiz',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='md-add' size={30} color={tintColor} />
+      tabBarIcon: ({ tintColor }) =>
+        <Ionicons name='md-add' size={30} color={tintColor} />
     }
   }
 })

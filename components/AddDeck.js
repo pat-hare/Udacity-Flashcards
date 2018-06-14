@@ -17,7 +17,6 @@ class AddDeck extends React.Component {
     inputText: ''
   }
   render() {
-    console.log('inputText', this.props)
     return (
       <View style={styles.button}>
         <Text style={styles.bigBlueTitle}>
@@ -33,7 +32,8 @@ class AddDeck extends React.Component {
         </View>
         <Button
           style={{height: 40, color: '#66a5ad'}}
-          onPress={() => this.props.actions.addDeckAction(this.state.inputText) && Alert.alert('Submitted!')}
+          onPress={() => this.props.actions.addDeckAction(this.state.inputText)
+            && Alert.alert('Submitted!')}
           title='Submit'
         />
       </View>

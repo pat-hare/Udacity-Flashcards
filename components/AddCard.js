@@ -1,5 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet, TextInput, Button, Alert } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Button,
+  Alert
+} from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as Actions from '../actions/index'
@@ -10,7 +17,6 @@ class AddCard extends React.Component {
     answerInput: ''
   }
   render() {
-    console.log('AddCard: ', this.props)
     return (
       <View style={styles.container}>
         <Text style={styles.bigBlueTitle}>
@@ -34,7 +40,12 @@ class AddCard extends React.Component {
         </View>
         <Button
           style={{height: 40, padding: 25, color: '#66a5ad'}}
-          onPress={() => this.props.actions.addCardAction({deck: this.props.navigation.state.params.itemId, question: this.state.questionInput, answer: this.state.answerInput}) && this.props.navigation.popToTop() && Alert.alert('Submitted!')}
+          onPress={() => this.props.actions.addCardAction({
+            deck: this.props.navigation.state.params.itemId,
+            question: this.state.questionInput,
+            answer: this.state.answerInput
+          }) && this.props.navigation.popToTop()
+          && Alert.alert('Submitted!')}
           title='Submit'
         />
       </View>

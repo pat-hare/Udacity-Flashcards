@@ -1,6 +1,14 @@
 import React from 'react'
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native'
-import { setLocalNotification, clearLocalNotification } from '../App'
+import { View,
+  Text,
+  Button,
+  StyleSheet,
+  TouchableOpacity
+} from 'react-native'
+import {
+  setLocalNotification,
+  clearLocalNotification
+} from '../App'
 
 class Quiz extends React.Component {
   state = {
@@ -35,11 +43,17 @@ class Quiz extends React.Component {
     if (this.state.card - 1 !== this.props.navigation.state.params.questions.length) {
       return(
         <View style={styles.container}>
-          <Text>{this.state.card} / {this.props.navigation.state.params.cards}</Text>
-          <Text>{this.props.navigation.state.params.questions[this.state.card - 1].question}</Text>
+          <Text>
+            {this.state.card} / {this.props.navigation.state.params.cards}
+          </Text>
+          <Text>
+            {this.props.navigation.state.params.questions[this.state.card - 1].question}
+          </Text>
           {this.state.answer ?
             <View>
-              <Text>{this.props.navigation.state.params.questions[this.state.card - 1].answer}</Text>
+              <Text>
+                {this.props.navigation.state.params.questions[this.state.card - 1].answer}
+              </Text>
               <Button
                 onPress={() => this.correct()}
                 title='Correct'
@@ -60,13 +74,17 @@ class Quiz extends React.Component {
 
     return(
       <View style={styles.container}>
-        <Text style={styles.bigBlueTitle}>{this.state.correct} / {this.props.navigation.state.params.cards}</Text>
+        <Text style={styles.bigBlueTitle}>
+          {this.state.correct} / {this.props.navigation.state.params.cards}
+        </Text>
         <Button
-          onPress={() => this.props.navigation.goBack() && clearLocalNotification().then(setLocalNotification)}
+          onPress={() => this.props.navigation.goBack()
+            && clearLocalNotification().then(setLocalNotification)}
           title='Back to deck!'
         />
         <Button
-          onPress={() => this.reset() && clearLocalNotification().then(setLocalNotification)}
+          onPress={() => this.reset()
+            && clearLocalNotification().then(setLocalNotification)}
           title='Start Over!'
         />
       </View>

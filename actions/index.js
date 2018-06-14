@@ -1,4 +1,8 @@
-import { addDeckToAsync, addCardToAsync, getInitialData } from '../utils/api'
+import {
+  addDeckToAsync,
+  addCardToAsync,
+  getInitialData
+} from '../utils/api'
 import { fetchDecksFromAsync } from '../utils/_DATA'
 
 export const ADD_CARD = 'ADD_CARD'

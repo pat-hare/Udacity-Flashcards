@@ -1,12 +1,18 @@
 import React from 'react'
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native'
+import { View,
+  Text,
+  Button,
+  StyleSheet,
+  TouchableOpacity
+} from 'react-native'
 
 class DeckView extends React.Component {
   render() {
-    console.log('DeckView: ', this.props)
     return (
       <View style={styles.container}>
-        <Text style={styles.bigBlueTitle}>{this.props.navigation.state.params.itemId}</Text>
+        <Text style={styles.bigBlueTitle}>
+          {this.props.navigation.state.params.itemId}
+        </Text>
         <Text>{this.props.navigation.state.params.cards} cards</Text>
         <TouchableOpacity
           style={styles.button}

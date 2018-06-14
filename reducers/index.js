@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from '../actions'
+import {
+  RECEIVE_DECKS,
+  ADD_DECK,
+  ADD_CARD
+} from '../actions'
 
 function decks (state={}, action) {
   switch (action.type) {
@@ -11,15 +15,23 @@ function decks (state={}, action) {
     case ADD_DECK:
       return {
         ...state,
-        [action.deck]: {title: action.deck, questions: []}
+        [action.deck]: {
+          title: action.deck,
+          questions: []
+        }
       }
     case ADD_CARD:
-      console.log('Reducers', state[action.card.deck].questions)
-      const newCard = {question: action.card.question, answer: action.card.answer}
+      const newCard = {
+        question: action.card.question,
+        answer: action.card.answer
+      }
       const prevArray = state[action.card.deck].questions
       return {
         ...state,
-        [action.card.deck]: {title: action.card.deck, questions: prevArray.concat(newCard)}
+        [action.card.deck]: {
+          title: action.card.deck,
+          questions: prevArray.concat(newCard)
+        }
       }
     default:
       return state

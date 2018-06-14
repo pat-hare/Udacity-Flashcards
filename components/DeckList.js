@@ -1,5 +1,12 @@
 import React from 'react'
-import { View, Text, Button, AsyncStorage, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
+import { View,
+  Text,
+  Button,
+  AsyncStorage,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity
+} from 'react-native'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions'
 import { DECK_STORAGE_KEY } from '../utils/api'

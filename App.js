@@ -1,10 +1,21 @@
 import React from 'react';
-import { createStore, applyMiddleware } from 'redux'
+import {
+  createStore,
+  applyMiddleware
+} from 'redux'
 import { Provider } from 'react-redux'
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  AsyncStorage
+} from 'react-native'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
-import { Notifications, Permissions } from 'expo'
+import {
+  Notifications,
+  Permissions
+} from 'expo'
 import reducer from './reducers'
 import { MainNavigator } from './components/Navigation'
 
