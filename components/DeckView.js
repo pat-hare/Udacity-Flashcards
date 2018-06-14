@@ -7,6 +7,7 @@ class DeckView extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.bigBlueTitle}>{this.props.navigation.state.params.itemId}</Text>
+        <Text>{this.props.navigation.state.params.cards} cards</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() =>

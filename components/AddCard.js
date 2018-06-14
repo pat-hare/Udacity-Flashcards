@@ -34,7 +34,7 @@ class AddCard extends React.Component {
         </View>
         <Button
           style={{height: 40, padding: 25, color: '#66a5ad'}}
-          onPress={() => this.props.actions.addCardAction({deck: this.props.navigation.state.params.itemId, question: this.state.questionInput, answer: this.state.answerInput}) && Alert.alert('Submitted!')}
+          onPress={() => this.props.actions.addCardAction({deck: this.props.navigation.state.params.itemId, question: this.state.questionInput, answer: this.state.answerInput}) && this.props.navigation.popToTop() && Alert.alert('Submitted!')}
           title='Submit'
         />
       </View>

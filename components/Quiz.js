@@ -63,7 +63,7 @@ class Quiz extends React.Component {
         <Text style={styles.bigBlueTitle}>{this.state.correct} / {this.props.navigation.state.params.cards}</Text>
         <Button
           onPress={() => this.props.navigation.goBack() && clearLocalNotification().then(setLocalNotification)}
-          title='Home'
+          title='Back to deck!'
         />
         <Button
           onPress={() => this.reset() && clearLocalNotification().then(setLocalNotification)}
