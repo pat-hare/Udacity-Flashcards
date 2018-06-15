@@ -33,7 +33,7 @@ class AddDeck extends React.Component {
         <Button
           style={{height: 40, color: '#66a5ad'}}
           onPress={() => this.props.actions.addDeckAction(this.state.inputText)
-            && Alert.alert('Submitted!')}
+            && this.props.navigation.goBack()}
           title='Submit'
         />
       </View>
